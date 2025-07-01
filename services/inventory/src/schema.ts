@@ -1,9 +1,13 @@
-import { z } from "zod";
+import { ActionType } from '@prisma/client';
+import { z } from 'zod';
 
-export const InventoryCreatedToSchema = z.object({
-    productId: z.string(),
-    sku: z.string(),
-    quantity: z.number().int().positive().optional().default(0),
-})
+export const InventoryCreateDTOSchema = z.object({
+	productId: z.string(),
+	sku: z.string(),
+	quantity: z.number().int().optional().default(0),
+});
 
-export type InventoryCreatedTo = z.infer<typeof InventoryCreatedToSchema>;
+export const InventoryUpdateDTOSchema = z.object({
+	quantity: z.number().int(),
+	actionType: z.nativeEnum(ActionType),
+});
