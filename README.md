@@ -150,14 +150,4 @@ Follow these steps to run the entire application locally:
 
 > **Note:** Always start the services in this order: Docker (for databases) → Inventory Service → Product Service → API Gateway. This ensures all dependencies are available when needed.
 
-## Contributing
 
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature`).
-3. Commit your changes.
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Open a pull request.
-
-## License
-
-Specify your license here.
