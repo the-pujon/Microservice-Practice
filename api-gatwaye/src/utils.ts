@@ -12,6 +12,9 @@ const createHandler = (hostName: string, path: string, method: string) => {
                 method,
                 url: `${hostName}${path}`,
                 data: req.body,
+                headers : {
+                    origin: "http://localhost:8086",
+                }
             })
 
             console.log(data)
@@ -39,12 +42,7 @@ export const configRoutes = (app:Express) => {
 
         service.routes.forEach(route => {
             route.methods.forEach(method => {
-                // console.log(`=> Configuring route for ${name}: ${method.toUpperCase()} /api${route.path} -> ${hostName}${route.path}`);
                 const handler = createHandler( hostName, route.path, method.toLowerCase());
-
-               
-                // console.log(handler)
-                // console.log(method)
                 app[method.toLowerCase()](`/api${route.path}`, handler);
 
             })
