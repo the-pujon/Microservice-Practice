@@ -23,6 +23,9 @@
                 {
                     "path" : "/inventory/:id/details",
                     "methods" : ["get"]
+                },{
+                    "path" : "/inventories",
+                    "methods" : ["post"]
                 }
             ]
         }

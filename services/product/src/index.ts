@@ -22,19 +22,19 @@ app.get('/health', (_req, res) => {
 });
 
 
-app.use((req, res, next) => {
-	const allowedOrigins = ['http://localhost:8081', 'http://127.0.0.1:8081'];
-	const origin = req.headers.origin || '';
+// app.use((req, res, next) => {
+// 	const allowedOrigins = ['http://localhost:8081', 'http://127.0.0.1:8081'];
+// 	const origin = req.headers.origin || '';
 
-	if (allowedOrigins.includes(origin)) {
-		res.setHeader('Access-Control-Allow-Origin', origin);
-		next();
-	} else {
-		res.status(403).json({ message: 'Forbidden' });
-		// Call next() to ensure the middleware always completes as expected by Express types
-		next();
-	}
-});
+// 	if (allowedOrigins.includes(origin)) {
+// 		res.setHeader('Access-Control-Allow-Origin', origin);
+// 		next();
+// 	} else {
+// 		res.status(403).json({ message: 'Forbidden' });
+// 		// Call next() to ensure the middleware always completes as expected by Express types
+// 		next();
+// 	}
+// });
 
 // app.use((req, res, next) => {
 // 	const allowedOrigins = ['http://localhost:8081', 'http://127.0.0.1:8081'];
@@ -60,9 +60,9 @@ app.get('/products', asyncHandler(getProducts));
 app.post('/products', asyncHandler(createProduct));
 
 // 404 handler
-app.use((_req, res) => {
-	res.status(404).json({ message: 'Not found' });
-});
+// app.use((_req, res) => {
+// 	res.status(404).json({ message: 'Not found' });
+// });
 
 // Error handler
 app.use((err, _req, res, _next) => {

@@ -10,6 +10,7 @@ const createInventory = async (
 	try {
 		// Validate request body
 		const parsedBody = InventoryCreateDTOSchema.safeParse(req.body);
+		console.log('Parsed Body:', parsedBody);
 		if (!parsedBody.success) {
 			return res.status(400).json({ error: parsedBody.error.errors });
 		}

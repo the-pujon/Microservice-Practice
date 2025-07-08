@@ -34,6 +34,11 @@ interface ErrorWithStack extends Error {
     stack?: string;
 }
 
+app.get('/health', (_req, res) => {
+    res.status(200).json({ status: 'API Gateway UP' });
+});
+
+
 app.use((_req, res)=>{
     res.status(404).json({ message: 'Not Found' });
 })
@@ -44,9 +49,6 @@ app.use((err: ErrorWithStack, _req: Request, res: Response, _next: NextFunction)
 });
 
 
-app.get('/health', (_req, res) => {
-    res.status(200).json({ status: 'API Gateway UP' });
-});
 
 const port = process.env.PORT || 8081;
 app.listen(port, () => {
