@@ -1,14 +1,16 @@
-import { Status } from '@prisma/client';
 import { z } from 'zod';
 
-export const ProductCreateDTOSchema = z.object({
-	sku: z.string().min(3).max(10),
-	name: z.string().min(3).max(255),
-	description: z.string().max(1000).optional(),
-	price: z.number().optional().default(0),
-	status: z.nativeEnum(Status).optional().default(Status.DRAFT),
-});
+export const UserCreateSchema = z.object({
+	authUserId: z.string(),
+	name: z.string(),
+	email: z.string().email(),
+	address: z.string().optional(),
+	phone: z.string().optional(),
+})
 
-export const ProductUpdateDTOSchema = ProductCreateDTOSchema.omit({
-	sku: true,
-}).partial();
+
+export const UserUpdateSchema = UserCreateSchema.omit({
+	authUserId: true
+}).extend({
+	id: z.string()
+}).partial()

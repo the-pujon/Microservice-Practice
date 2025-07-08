@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
-import { createUser, getUserById } from './controllers';
+// import { createUser, getUserById } from './controllers';
 
 dotenv.config();
 
@@ -47,8 +47,8 @@ function asyncHandler(fn: any) {
 	};
 }
 
-app.get('/users/:id', asyncHandler(getUserById));
-app.post('/users', asyncHandler(createUser));
+// app.get('/users/:id', asyncHandler(getUserById));
+// app.post('/users', asyncHandler(createUser));
 
 
 // 404 handler

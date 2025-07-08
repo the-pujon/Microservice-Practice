@@ -42,7 +42,7 @@ model User {
 
 enum LoginAttempt {
   SUCCESS
-  FAILURE
+  FAILED
 }
 
 model LoginHistory {

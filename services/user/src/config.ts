@@ -1,2 +1,2 @@
-export const INVENTORY_URL =
-	process.env.INVENTORY_SERVICE_URL || 'http://localhost:4002';
+export const USER_SERVICE =
+	process.env.USER_SERVICE_URL || 'http://localhost:4004';

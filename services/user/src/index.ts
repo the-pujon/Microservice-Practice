@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import morgan from 'morgan';
+import { createUser, getUserById } from './controllers';
 
 dotenv.config();
 
@@ -46,6 +47,9 @@ function asyncHandler(fn: any) {
 	};
 }
 
+app.get('/users/:id', asyncHandler(getUserById));
+app.post('/users', asyncHandler(createUser));
+
 
 // 404 handler
 app.use((_req, res) => {
@@ -58,7 +62,7 @@ app.use((err, _req, res, _next) => {
 	res.status(500).json({ message: 'Internal server error' });
 });
 
-const port = process.env.PORT || 4001;
+const port = process.env.PORT || 4000;
 const serviceName = process.env.SERVICE_NAME || 'User-Service';
 
 app.listen(port, () => {
