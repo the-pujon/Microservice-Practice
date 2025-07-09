@@ -86,41 +86,12 @@ const userRegistration = async (
 
     console.log("Verification code created successfully:", code);
       //Send verification email
-
-   
-      //  await axios.post(`http://localhost:4005/emails/send`, {
-      //   recipient: user.email,
-      //   subject: "Email Verification",
-      //   body: `Your verification code is: ${code}. It will expire in 24 hours.`,
-      //   source: "user-registration",
-      // });
-      // await axios.post(`${EMAIL_SERVICE}/emails/send`, {
-      //   recipient: user.email,
-      //   subject: "Email Verification",
-      //   body: `Your verification code is: ${code}. It will expire in 24 hours.`,
-      //   source: "user-registration",
-      // });
-
-      await fetch(`${EMAIL_SERVICE}/emails/send`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          recipient: user.email,
-          subject: "Email Verification",
-          body: `Your verification code is: ${code}. It will expire in 24 hours.`,
-          source: "user-registration",  
-        }),
-        })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Failed to send verification email");
-          }
-          return response.json();
-        })
-     
-     
+      await axios.post(`${EMAIL_SERVICE}/emails/send`, {
+        recipient: user.email,
+        subject: "Email Verification",
+        body: `Your verification code is: ${code}. It will expire in 24 hours.`,
+        source: "user-registration",
+      });
 
     return res.status(201).json({
       message: "User registered successfully. Check your email for verification code.",
