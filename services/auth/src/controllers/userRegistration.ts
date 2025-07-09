@@ -3,8 +3,18 @@ import prisma from "@/prisma";
 import { UserCreateSchema } from "@/schemas";
 import bcrypt from "bcryptjs";
 import axios from "axios";
-import { USER_SERVICE } from "@/config";
+import { EMAIL_SERVICE, USER_SERVICE } from "@/config";
 
+
+const generateVerificationCode = () => {
+  const timestamp = new Date().getTime().toString();
+
+  const randomNum = Math.floor(10+ Math.random() * 90)
+
+  let code = (timestamp + randomNum).slice(-5); // last 5 digits
+
+  return code;
+}
 const userRegistration = async (
   req: Request,
   res: Response,
@@ -61,14 +71,63 @@ const userRegistration = async (
         console.log(response.data);
       });
 
-      // TODO: Verification code generate
-      // TODO: Send verification email
+      console.log("User created in User Service successfully:", user);
+
+      // Verification code generate
+    const code = generateVerificationCode();
+
+    await prisma.verificationCode.create({
+      data: {
+        userId: user.id,
+        code: code,
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours from now
+      },
+    });
+
+    console.log("Verification code created successfully:", code);
+      //Send verification email
+
+   
+      //  await axios.post(`http://localhost:4005/emails/send`, {
+      //   recipient: user.email,
+      //   subject: "Email Verification",
+      //   body: `Your verification code is: ${code}. It will expire in 24 hours.`,
+      //   source: "user-registration",
+      // });
+      // await axios.post(`${EMAIL_SERVICE}/emails/send`, {
+      //   recipient: user.email,
+      //   subject: "Email Verification",
+      //   body: `Your verification code is: ${code}. It will expire in 24 hours.`,
+      //   source: "user-registration",
+      // });
+
+      await fetch(`${EMAIL_SERVICE}/emails/send`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          recipient: user.email,
+          subject: "Email Verification",
+          body: `Your verification code is: ${code}. It will expire in 24 hours.`,
+          source: "user-registration",  
+        }),
+        })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Failed to send verification email");
+          }
+          return response.json();
+        })
+     
+     
 
     return res.status(201).json({
-      message: "User registered successfully",
+      message: "User registered successfully. Check your email for verification code.",
       user,
     });
   } catch (error) {
+    console.error("Error in user registration:", error);
     next(error);
   }
 };

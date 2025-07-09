@@ -16,19 +16,19 @@ app.get('/health', (_req, res) => {
 });
 
 
-app.use((req, res, next) => {
-	const allowedOrigins = ['http://localhost:8081', 'http://127.0.0.1:8081'];
-	const origin = req.headers.origin || '';
+// app.use((req, res, next) => {
+// 	const allowedOrigins = ['http://localhost:8081', 'http://127.0.0.1:8081'];
+// 	const origin = req.headers.origin || '';
 
-	if (allowedOrigins.includes(origin)) {
-		res.setHeader('Access-Control-Allow-Origin', origin);
-		next();
-	} else {
-		res.status(403).json({ message: 'Forbidden' });
-		// Call next() to ensure the middleware always completes as expected by Express types
-		next();
-	}
-});
+// 	if (allowedOrigins.includes(origin)) {
+// 		res.setHeader('Access-Control-Allow-Origin', origin);
+// 		next();
+// 	} else {
+// 		res.status(403).json({ message: 'Forbidden' });
+// 		// Call next() to ensure the middleware always completes as expected by Express types
+// 		next();
+// 	}
+// });
 
 // app.use((req, res, next) => {
 // 	const allowedOrigins = ['http://localhost:8081', 'http://127.0.0.1:8081'];
