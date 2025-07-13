@@ -7,7 +7,7 @@ const auth = async (req: Request, res: Response, next: NextFunction) => {
     
     try{
         const token = req.headers['authorization'].split(' ')[1];
-        const {data} = await axios.post('/auth/verify-token', {accessToken: token,
+        const {data} = await axios.post(`${process.env.AUTH_SERVICE_URL}/auth/verify-token`, {accessToken: token,
             headers: {
                 ip: req.ip,
                 'user-agent': req.headers['user-agent'],
