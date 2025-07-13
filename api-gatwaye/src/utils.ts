@@ -15,6 +15,11 @@ const createHandler = (hostName: string, path: string, method: string) => {
                 data: req.body,
                 headers : {
                     origin: "http://localhost:8086",
+                    'x-user-id': req.headers['x-user-id'],
+                    'x-user-name': req.headers['x-user-name'],
+                    'x-user-email': req.headers['x-user-email'],
+                    'x-user-role': req.headers['x-user-role'],
+                    'user-agent': req.headers['user-agent'],
                 }
             })
 

@@ -1,4 +1,4 @@
-import { jwt } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import { AccessTokenSchema } from "@/schemas";
 import prisma from '@/prisma';
 
@@ -12,11 +12,12 @@ const verifyToken = async (req, res) => {
 
         const { accessToken } = parseBody.data;
 
-        const decode = await jwt.verify(accessToken, process.env.JWT_SECRET);
+        const decode = await jwt.verify(accessToken, process.env.JWT_SECRET!);
 
-        const user = prisma.user.findUnique({
+
+        const user = await prisma.user.findUnique({
             where: {
-                id: (decode as any).id
+                id: (decode as any).userId
             },
             select: {
                 id: true,
@@ -25,6 +26,7 @@ const verifyToken = async (req, res) => {
                 role: true
             }
         })
+
 
         if(!user) {
             return res.status(401).json({ message: "Unauthorized" });
