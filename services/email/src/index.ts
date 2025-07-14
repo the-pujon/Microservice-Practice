@@ -2,7 +2,10 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import morgan from "morgan";
-import { userLogin, userRegistration, verifyEmail, verifyToken } from "./controllers";
+// import { sendEmail } from "./controllers/sendEmail";
+import { getEmails } from "./controllers/getEmails";
+import sendEmail from "./controllers/sendEmail";
+// import { userLogin, userRegistration, verifyToken } from "./controllers";
 // import { createUser, getUserById } from './controllers';
 
 dotenv.config();
@@ -53,10 +56,11 @@ function asyncHandler(fn: any) {
 
 // app.get('/users/:id', asyncHandler(getUserById));
 // app.post('/users', asyncHandler(createUser));
-app.post("/auth/register", asyncHandler(userRegistration));
-app.post("/auth/login", asyncHandler(userLogin));
-app.post("/auth/verify-token", asyncHandler(verifyToken));
-app.post("/auth/verify-email", asyncHandler(verifyEmail));
+// app.post("/auth/register", asyncHandler(userRegistration));
+// app.post("/auth/login", asyncHandler(userLogin));
+// app.post("/auth/verify-token", asyncHandler(verifyToken));
+app.post("/emails/send", asyncHandler(sendEmail))
+app.get("/email", asyncHandler(getEmails))
 
 // 404 handler
 app.use((_req, res) => {
@@ -68,9 +72,9 @@ app.use((err, _req, res, _next) => {
   console.error(err.stack);
   res.status(500).json({ message: "Internal server error" });
 });
-const port = process.env.PORT || 4000;
 
-const serviceName = process.env.SERVICE_NAME || 'User-Service';
+const port = process.env.PORT || 4005;
+const serviceName = process.env.SERVICE_NAME || "Email-Service";
 
 app.listen(port, () => {
   console.log(`${serviceName} is running on port ${port}:: http://localhost:${port}`);

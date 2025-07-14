@@ -126,7 +126,10 @@ const userLogin = async (req: Request, res: Response, next: NextFunction) => {
     res.status(200).json({
       accessToken,
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 };
 
 

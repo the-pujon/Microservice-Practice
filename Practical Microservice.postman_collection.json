@@ -1,0 +1,928 @@
+{
+	"info": {
+		"_postman_id": "010e15a2-be50-4df9-a7dd-cbe3d42f74fe",
+		"name": "Practical Microservice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41088050"
+	},
+	"item": [
+		{
+			"name": "API Gateway",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "Register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"auvi1234@gmail.com\",\r\n    \"password\": \"pujondas\",\r\n    \"name\": \"pujon auvi\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiGateway}}/auth/register",
+									"host": [
+										"{{apiGateway}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"auvi1234@gmail.com\",\r\n    \"password\": \"pujondas\",\r\n    \"name\": \"pujon auvi\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{apiGateway}}/auth/register",
+											"host": [
+												"{{apiGateway}}"
+											],
+											"path": [
+												"auth",
+												"register"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 13 Jul 2025 05:57:23 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1752387063"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "224"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"e0-7zwz7rHrtpglzCiVN9xS1Tweunc\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"User registered successfully. Check your email for verification code.\",\n    \"user\": {\n        \"id\": \"cmd19ivq40000wbbwc33k82gj\",\n        \"name\": \"pujon auvi\",\n        \"email\": \"auvi1234@gmail.com\",\n        \"role\": \"USER\",\n        \"status\": \"PENDING\",\n        \"verified\": false\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "Email Verify",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"auvi1234@gmail.com\",\r\n    \"code\" : \"16117\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiGateway}}/auth/verify-email",
+									"host": [
+										"{{apiGateway}}"
+									],
+									"path": [
+										"auth",
+										"verify-email"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"auvi1234@gmail.com\",\r\n    \"code\" : \"16117\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{apiGateway}}/auth/verify-email",
+											"host": [
+												"{{apiGateway}}"
+											],
+											"path": [
+												"auth",
+												"verify-email"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "97"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 13 Jul 2025 05:58:58 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1752387063"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "41"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"29-FwmB7f+DMIStv83qlAh+ZHaWnfU\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Email verified successfully\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"auvi1234@gmail.com\",\r\n    \"password\" : \"pujondas\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiGateway}}/auth/login",
+									"host": [
+										"{{apiGateway}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\": \"auvi1234@gmail.com\",\r\n    \"password\" : \"pujondas\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{apiGateway}}/auth/login",
+											"host": [
+												"{{apiGateway}}"
+											],
+											"path": [
+												"auth",
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "95"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 13 Jul 2025 06:01:37 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1752387063"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "279"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"117-uGM463uQx1Rm6oDSmUSFCoRvAmk\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWQxOWl2cTQwMDAwd2Jid2MzM2s4MmdqIiwiZW1haWwiOiJhdXZpMTIzNEBnbWFpbC5jb20iLCJuYW1lIjoicHVqb24gYXV2aSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzUyMzg2NDk3LCJleHAiOjE3NTI0NzI4OTd9.GdXXhbLxcI6F7TGcMGhMK-7kBtsIAwAgxh53z1QxMYU\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Verify Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"accessToken\" : \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWQxOWl2cTQwMDAwd2Jid2MzM2s4MmdqIiwiZW1haWwiOiJhdXZpMTIzNEBnbWFpbC5jb20iLCJuYW1lIjoicHVqb24gYXV2aSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzUyMzg2NzEwLCJleHAiOjE3NTI0NzMxMTB9.nm1CrecVtLkkcg7QndYpXoj8B8A01Ig6vzCOn1BfDMI\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiGateway}}/auth/verify-token",
+									"host": [
+										"{{apiGateway}}"
+									],
+									"path": [
+										"auth",
+										"verify-token"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n  \"accessToken\" : \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWQxOWl2cTQwMDAwd2Jid2MzM2s4MmdqIiwiZW1haWwiOiJhdXZpMTIzNEBnbWFpbC5jb20iLCJuYW1lIjoicHVqb24gYXV2aSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzUyMzg2NzEwLCJleHAiOjE3NTI0NzMxMTB9.nm1CrecVtLkkcg7QndYpXoj8B8A01Ig6vzCOn1BfDMI\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{apiGateway}}/auth/verify-token",
+											"host": [
+												"{{apiGateway}}"
+											],
+											"path": [
+												"auth",
+												"verify-token"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "87"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 13 Jul 2025 06:07:51 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1752387063"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "129"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"81-Qfmsv3Ogr+YWXOrW7y0/v2sUldQ\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Authorized\",\n    \"user\": {\n        \"id\": \"cmd19ivq40000wbbwc33k82gj\",\n        \"email\": \"auvi1234@gmail.com\",\n        \"name\": \"pujon auvi\",\n        \"role\": \"USER\"\n    }\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "products",
+					"item": [
+						{
+							"name": "Create Products",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWQxOWl2cTQwMDAwd2Jid2MzM2s4MmdqIiwiZW1haWwiOiJhdXZpMTIzNEBnbWFpbC5jb20iLCJuYW1lIjoicHVqb24gYXV2aSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzUyMzg2NzEwLCJleHAiOjE3NTI0NzMxMTB9.nm1CrecVtLkkcg7QndYpXoj8B8A01Ig6vzCOn1BfDMI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \"sku\" : \"earphone\",\r\n \"name\" : \"xiomi bass earphone\",\r\n \"description\" : \"Extra bass xiomi earphone\",\r\n \"price\": 200,\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{apiGateway}}/products",
+									"host": [
+										"{{apiGateway}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n \"sku\" : \"earphone\",\r\n \"name\" : \"xiomi bass earphone\",\r\n \"description\" : \"Extra bass xiomi earphone\",\r\n \"price\": 200,\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{apiGateway}}/products",
+											"host": [
+												"{{apiGateway}}"
+											],
+											"path": [
+												"products"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "98"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 13 Jul 2025 06:35:07 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1752389384"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "271"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"10f-6lu7qyp6liGN+mbd0MbSLbGDE1s\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": \"cmd1avem70000wb7w9nqxv3p9\",\n    \"sku\": \"earphone\",\n    \"name\": \"xiomi bass earphone\",\n    \"description\": \"Extra bass xiomi earphone\",\n    \"price\": 200,\n    \"inventoryId\": \"cmd1avesd0000wbukbmjhqf6g\",\n    \"status\": \"DRAFT\",\n    \"createdAt\": \"2025-07-13T06:35:08.095Z\",\n    \"updatedAt\": \"2025-07-13T06:35:08.095Z\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get Products",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJjbWQxOWl2cTQwMDAwd2Jid2MzM2s4MmdqIiwiZW1haWwiOiJhdXZpMTIzNEBnbWFpbC5jb20iLCJuYW1lIjoicHVqb24gYXV2aSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzUyMzg2NzEwLCJleHAiOjE3NTI0NzMxMTB9.nm1CrecVtLkkcg7QndYpXoj8B8A01Ig6vzCOn1BfDMI",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n \"sku\" : \"earphone\",\r\n \"name\" : \"xiomi bass earphone\",\r\n \"description\" : \"Extra bass xiomi earphone\",\r\n \"price\": 200,\r\n}"
+								},
+								"url": {
+									"raw": "{{apiGateway}}/products",
+									"host": [
+										"{{apiGateway}}"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n \"sku\" : \"earphone\",\r\n \"name\" : \"xiomi bass earphone\",\r\n \"description\" : \"Extra bass xiomi earphone\",\r\n \"price\": 200,\r\n}"
+										},
+										"url": {
+											"raw": "{{apiGateway}}/products",
+											"host": [
+												"{{apiGateway}}"
+											],
+											"path": [
+												"products"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										},
+										{
+											"key": "Content-Security-Policy",
+											"value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+										},
+										{
+											"key": "Cross-Origin-Opener-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Cross-Origin-Resource-Policy",
+											"value": "same-origin"
+										},
+										{
+											"key": "Origin-Agent-Cluster",
+											"value": "?1"
+										},
+										{
+											"key": "Referrer-Policy",
+											"value": "no-referrer"
+										},
+										{
+											"key": "Strict-Transport-Security",
+											"value": "max-age=31536000; includeSubDomains"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-DNS-Prefetch-Control",
+											"value": "off"
+										},
+										{
+											"key": "X-Download-Options",
+											"value": "noopen"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "SAMEORIGIN"
+										},
+										{
+											"key": "X-Permitted-Cross-Domain-Policies",
+											"value": "none"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "0"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "100"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "97"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 13 Jul 2025 06:39:08 GMT"
+										},
+										{
+											"key": "X-RateLimit-Reset",
+											"value": "1752389384"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json; charset=utf-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "360"
+										},
+										{
+											"key": "ETag",
+											"value": "W/\"168-HOGhTSwlTS360FygQXI8krMQT7w\""
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=5"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": \"cmcu52i7n0000wbfoka4jc868\",\n            \"sku\": \"pujon\",\n            \"name\": \"asffds\",\n            \"price\": 12,\n            \"inventoryId\": \"cmcu52i8v0004wb94hdbq2f3w\"\n        },\n        {\n            \"id\": \"cmcu51r390000wb2cgx9x4wes\",\n            \"sku\": \"das\",\n            \"name\": \"asffds\",\n            \"price\": 12,\n            \"inventoryId\": \"pujon2\"\n        },\n        {\n            \"id\": \"cmd1avem70000wb7w9nqxv3p9\",\n            \"sku\": \"earphone\",\n            \"name\": \"xiomi bass earphone\",\n            \"price\": 200,\n            \"inventoryId\": \"cmd1avesd0000wbukbmjhqf6g\"\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
