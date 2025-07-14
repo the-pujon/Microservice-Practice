@@ -61,10 +61,8 @@ app.use((err, _req, res, _next) => {
 	console.error(err.stack);
 	res.status(500).json({ message: 'Internal server error' });
 });
-
 const port = process.env.PORT || 4000;
 const serviceName = process.env.SERVICE_NAME || 'User-Service';
-
 app.listen(port, () => {
 	console.log(`${serviceName} is running on port ${port}`);
 });
