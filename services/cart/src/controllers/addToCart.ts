@@ -1,6 +1,8 @@
+import { CART_TTL } from '@/config';
 import { redis } from '@/redis';
 import { CartItemSchema } from '@/schema';
-import { NextFunction, Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';  
+import {v4 as uuid} from "uuid"
 
 const addToCart = async (req: Request, res: Response, next: NextFunction) => {
     try{
@@ -15,7 +17,7 @@ const addToCart = async (req: Request, res: Response, next: NextFunction) => {
         let cartSessionId = (req.headers['x-cart-session-id']as string)  || null;
 
         if(cartSessionId){
-            const exists = await redis.exists(cartSessionId);
+            const exists = await redis.exists(`session:${cartSessionId}`);
             console.log('Cart session exists:', exists);
 
             if(!exists){
@@ -24,8 +26,21 @@ const addToCart = async (req: Request, res: Response, next: NextFunction) => {
         }
 
         if(!cartSessionId){
-            cartSessionId = 
+            // Generate a new session ID if not present
+            cartSessionId = uuid();
+            console.log('Generated new cart session ID:', cartSessionId);
+
+            // Initialize a new cart in Redis
+            await redis.setex(`session:${cartSessionId}`,CART_TTL, cartSessionId); // 7 days expiry
+
+            res.setHeader('x-cart-session-id', cartSessionId);
         }
+
+
+        await redis.hset(`cart:${cartSessionId}`, parseBody.data.productId, JSON.stringify({
+            inventoryId: parseBody.data.inventoryId,
+            quantity: parseBody.data.quantity
+        }));
     }
     catch (error) {
         next(error);
