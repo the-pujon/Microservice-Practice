@@ -39,7 +39,7 @@ const addToCart = async (req: Request, res: Response, next: NextFunction) => {
 
     //check if the inventory available
     const { data } = await axios.get(
-      `${process.env.INVENTORY_SERVICE_URL}/api/inventory/${parseBody.data.inventoryId}`
+      `${process.env.INVENTORY_SERVICE_URL}/api/inventories/${parseBody.data.inventoryId}`
     );
     if (Number(data.quantity) < parseBody.data.quantity) {
       return res.status(400).json({

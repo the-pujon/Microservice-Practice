@@ -54,6 +54,7 @@ function asyncHandler(fn: any) {
 
 app.post("cart/add-to-cart", asyncHandler(addToCart));
 app.get("cart/my-cart", asyncHandler(getMyCart));
+app.post("cart/clear-cart", asyncHandler(getMyCart));
 
 // app.get('/users/:id', asyncHandler(getUserById));
 // app.post('/users', asyncHandler(createUser));
